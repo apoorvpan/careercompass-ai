@@ -356,9 +356,8 @@ export default function LearningResources({
       </p>
 
       <p className="mt-3 text-xs leading-5 text-slate-400">
-        This sends the selected requirement, target role, and learning
-        preferences to our research service. It does not send your full profile.
-        Each request uses paid AI and web-search services.
+        Discover learning resources for your chosen skill, target role, and
+        study preferences.
       </p>
 
       <p role="status" className="mt-3 text-sm text-teal-300">

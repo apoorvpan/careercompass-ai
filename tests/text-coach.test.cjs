@@ -62,11 +62,11 @@ test('enforces total history size', async () => {
   assert.equal((await f.route.POST(request({ history }))).status, 400);
   assert.equal(f.calls.model, 0);
 });
-test('missing quota migration fails closed with setup guidance', async () => {
+test('missing quota migration fails closed with a user-friendly error', async () => {
   const f = fixture({ migrationMissing: true });
   const response = await f.route.POST(request());
   assert.equal(response.status, 503);
-  assert.match((await response.json()).error, /006_text_coach/);
+  assert.match((await response.json()).error, /temporarily unavailable/);
   assert.equal(f.calls.model, 0);
 });
 test('quota exhausted prevents model invocation', async () => {
@@ -78,7 +78,7 @@ test('provider authorization failure returns safe actionable error', async () =>
   const f = fixture({ providerError: true });
   const response = await f.route.POST(request());
   assert.equal(response.status, 503);
-  assert.match((await response.json()).error, /OpenAI API key/);
+  assert.match((await response.json()).error, /temporarily unavailable/);
 });
 test('incomplete answer is not presented as completed', async () => {
   const f = fixture({ incomplete: true });

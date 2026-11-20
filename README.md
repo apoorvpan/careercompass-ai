@@ -1,4 +1,4 @@
-# CareerCompass AI
+# AppyJiyooss Career Conselor
 
 A career-assistance app for finding remote jobs, comparing resume evidence with job requirements, researching learning resources, and asking follow-up questions through a text coach.
 

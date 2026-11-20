@@ -40,7 +40,7 @@ export async function runJobSearchAgent(input: JobAgentInput) {
       model: process.env.OPENAI_MODEL || "gpt-4.1-mini",
       store: false,
       instructions: `
-You are CareerCompass's Job Search Agent.
+You are AppyJiyooss Career Conselor's Job Search Agent.
 
 Find relevant remote job listings for a candidate in India.
 Use the search_jobs tool to retrieve actual listings.

@@ -47,7 +47,7 @@ export async function runLearningAgent(input: LearningInput) {
     max_tool_calls: 3,
     max_output_tokens: 2500,
     instructions: `
-You are CareerCompass's Learning Resources Agent.
+You are AppyJiyooss Career Conselor's Learning Resources Agent.
 
 Research a practical learning path for ONE requested skill.
 Use web search before making resource recommendations.

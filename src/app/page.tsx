@@ -153,7 +153,7 @@ export default function Home() {
         <AccountControls />
         <header className="mb-10">
           <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-teal-400">
-            CareerCompass AI Analyser
+            AppyJiyooss Career Conselor
           </p>
 
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
@@ -309,9 +309,8 @@ export default function Home() {
                 </button>
 
                 <p className="text-xs leading-5 text-slate-400">
-                  Submitting sends your profile and job description to our
-                  server and OpenAI for assessment. Leave out sensitive personal
-                  information.
+                  Compare your experience with the job requirements.
+                  Leave out sensitive personal information.
                 </p>
               </form>
             </section>
@@ -516,8 +515,7 @@ export default function Home() {
               <p
                 className="mt-3 text-xs leading-5 text-slate-400"
               >
-                Open a saved assessment to start text chat. OpenAI API usage
-                charges may apply.
+                Open a saved assessment to start text chat.
               </p>
             </section>
 

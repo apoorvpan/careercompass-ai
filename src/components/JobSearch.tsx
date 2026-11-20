@@ -165,10 +165,8 @@ export default function JobSearch({
       </h2>
 
       <p className="mt-3 text-sm leading-6 text-slate-400">
-        The agent uses your reviewed profile and target role to choose
-        searches for remote jobs available to candidates in India. Your profile
-        is sent to OpenAI; only generated search keywords are sent to the job
-        provider. This uses paid AI requests.
+        Find remote opportunities based on your experience and target role.
+        Review each listing and follow its application link to apply.
       </p>
 
       <button
@@ -247,12 +245,22 @@ export default function JobSearch({
               </button>
 
               <a
+                href={job.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-lg bg-teal-400 px-4 py-2 text-sm font-semibold text-slate-950 hover:bg-teal-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal-300"
+              >
+                Apply for this job
+                <span className="sr-only">: {job.title} at {job.company} (opens in a new tab)</span>
+              </a>
+
+              <a
                 href={job.sourceUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-sm text-teal-300 underline underline-offset-4"
               >
-                View on Himalayas
+                View job details
                 <span className="sr-only"> (opens in a new tab)</span>
               </a>
             </div>

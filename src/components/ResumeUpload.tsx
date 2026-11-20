@@ -131,9 +131,8 @@ export default function ResumeUpload({
       />
 
       <p id="resume-privacy" className="mt-3 text-xs leading-5 text-slate-400">
-        Clicking Extract and fill sends your PDF or extracted DOCX text to
-        OpenAI. Remove sensitive information before uploading. This application
-        does not save the original file to a database.
+        Your résumé is processed to fill your profile. Remove sensitive
+        information before uploading and review the extracted text.
       </p>
 
       <button
