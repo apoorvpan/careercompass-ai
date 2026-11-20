@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AppyJiyooss Career Conselor",
-  description: "Find remote jobs, assess your resume against job requirements, and plan your next career steps with an AI text coach.",
+  title: "GrowPath | Grow beyond your next job",
+  description: "Grow beyond your next job. Find remote jobs, assess your resume against job requirements, and plan your next career steps with an AI text coach.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

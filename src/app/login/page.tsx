@@ -92,7 +92,7 @@ export default function LoginPage() {
     <main className="min-h-screen bg-slate-950 px-5 py-16 text-slate-100">
       <div className="mx-auto max-w-md">
         <Link href="/" className="text-sm text-teal-300 underline">
-          Back to AppyJiyooss Career Conselor
+          Back to GrowPath
         </Link>
 
         <section className="mt-8 rounded-2xl border border-slate-800 bg-slate-900 p-6">

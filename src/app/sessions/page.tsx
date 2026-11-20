@@ -84,7 +84,7 @@ export default function SessionsPage() {
     <main className="min-h-screen bg-slate-950 px-5 py-12 text-slate-100">
       <div className="mx-auto max-w-3xl">
         <Link href="/" className="text-sm text-teal-300 underline">
-          Back to AppyJiyooss Career Conselor
+          Back to GrowPath
         </Link>
 
         <h1 className="mt-6 text-3xl font-bold">Saved assessments</h1>
