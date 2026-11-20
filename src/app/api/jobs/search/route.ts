@@ -4,23 +4,8 @@ import {
   JobSearchInputSchema,
   searchJobs,
 } from "@/lib/tools/search-jobs";
-import { createClient as createSupabaseClient } from "@/lib/supabase/server";
 
 export async function POST(request: Request) {
-  const supabase = await createSupabaseClient();
-
-  const {
-    data: { user },
-    error: authError,
-  } = await supabase.auth.getUser();
-
-  if (authError || !user) {
-    return NextResponse.json(
-      { error: "Please sign in to use this feature." },
-      { status: 401 },
-    );
-  }
-
   let body: unknown;
 
   try {
@@ -37,7 +22,7 @@ export async function POST(request: Request) {
   if (!parsed.success) {
     return NextResponse.json(
       {
-        error: "Provide search keywords and an optional Indian city or state.",
+        error: "Enter a target job between 2 and 120 characters.",
       },
       { status: 400 },
     );

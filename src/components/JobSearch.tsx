@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type FormEvent } from "react";
 import { z } from "zod";
 
 const WebUrlSchema = z
@@ -31,16 +31,13 @@ const SearchResponseSchema = z.object({
 type Job = z.infer<typeof JobSchema>;
 
 export default function JobSearch({
-  targetRole,
-  profile,
   disabled,
   onSelect,
 }: {
-  targetRole: string;
-  profile: string;
   disabled: boolean;
   onSelect: (description: string) => void;
 }) {
+  const [targetJob, setTargetJob] = useState("");
   const [jobs, setJobs] = useState<Job[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -49,23 +46,17 @@ export default function JobSearch({
   const [searchedRole, setSearchedRole] = useState("");
   const [selectionMessage, setSelectionMessage] = useState("");
 
-  async function findJobs() {
-    if (loading || disabled) return;
+  async function findJobs(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (loading) return;
 
-    const keywords = targetRole.trim();
+    const keywords = targetJob.trim();
 
     setError("");
     setSelectionMessage("");
 
-    if (keywords.length < 2) {
-      setError("Enter a target role in the form above first.");
-      return;
-    }
-
-    if (profile.trim().length < 80) {
-      setError(
-        "Upload and review your résumé, or enter at least 80 characters describing your experience.",
-      );
+    if (keywords.length < 2 || keywords.length > 120) {
+      setError("Enter a target job between 2 and 120 characters.");
       return;
     }
 
@@ -75,14 +66,13 @@ export default function JobSearch({
     setNotice("");
 
     try {
-      const response = await fetch("/api/jobs/discover", {
+      const response = await fetch("/api/jobs/search", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          targetRole: keywords,
-          profile,
+          keywords,
         }),
       });
 
@@ -165,18 +155,35 @@ export default function JobSearch({
       </h2>
 
       <p className="mt-3 text-sm leading-6 text-slate-400">
-        Find remote opportunities based on your experience and target role.
+        Enter your target job to find remote opportunities available to candidates in India.
         Review each listing and follow its application link to apply.
       </p>
 
-      <button
-        type="button"
-        onClick={findJobs}
-        disabled={disabled || loading}
-        className="mt-5 rounded-xl bg-teal-400 px-5 py-3 font-semibold text-slate-950 hover:bg-teal-300 disabled:cursor-not-allowed disabled:opacity-60"
-      >
-        {loading ? "Searching jobs..." : "Search remote jobs"}
-      </button>
+      <form onSubmit={findJobs} className="mt-5 space-y-3">
+        <label htmlFor="target-job-search" className="block text-sm font-medium">
+          Target job
+        </label>
+        <input
+          id="target-job-search"
+          name="targetJob"
+          type="search"
+          placeholder="e.g. Python developer or Data analyst"
+          value={targetJob}
+          onChange={(event) => setTargetJob(event.target.value)}
+          required
+          minLength={2}
+          maxLength={120}
+          disabled={loading}
+          className="w-full rounded-xl border border-slate-700 bg-slate-950 p-3 text-slate-100 focus:outline-none focus:ring-2 focus:ring-teal-400"
+        />
+        <button
+          type="submit"
+          disabled={loading}
+          className="rounded-xl bg-teal-400 px-5 py-3 font-semibold text-slate-950 hover:bg-teal-300 disabled:cursor-not-allowed disabled:opacity-60"
+        >
+          {loading ? "Searching jobs..." : "Search remote jobs"}
+        </button>
+      </form>
 
       <p role="status" className="mt-3 text-sm text-teal-300">
         {loading

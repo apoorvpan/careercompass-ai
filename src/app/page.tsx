@@ -315,9 +315,6 @@ export default function Home() {
               </form>
             </section>
             <JobSearch
-              key={`${form.targetRole}\u0000${form.profile}`}
-              targetRole={form.targetRole}
-              profile={form.profile}
               disabled={loading || resumeLoading}
               onSelect={(description) =>
                 updateField("jobDescription", description)

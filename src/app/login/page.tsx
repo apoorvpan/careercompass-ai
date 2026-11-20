@@ -22,6 +22,10 @@ export default function LoginPage() {
 
     setError("");
     setMessage("");
+    if (mode === "signup" && password.length < 8) {
+      setError("Use at least 8 characters for your password.");
+      return;
+    }
     setLoading(true);
 
     try {
@@ -133,7 +137,7 @@ export default function LoginPage() {
                 }
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
-                minLength={mode === "signup" ? 12 : undefined}
+                minLength={mode === "signup" ? 8 : undefined}
                 required
                 disabled={loading}
                 className={fieldClasses}
@@ -141,7 +145,7 @@ export default function LoginPage() {
 
               {mode === "signup" && (
                 <p className="mt-2 text-xs text-slate-400">
-                  Use at least 12 characters.
+                  Use at least 8 characters.
                 </p>
               )}
             </div>
